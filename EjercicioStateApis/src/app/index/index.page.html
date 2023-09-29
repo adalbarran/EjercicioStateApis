@@ -12,10 +12,17 @@
   </ion-header>
   <ion-card>
     <ion-card-content>
-      <ion-item>
-        <ion-input label="Ingrese el mensaje:" ></ion-input>
-      </ion-item>
-      <ion-button (click)="RecuperarMensaje"> Click </ion-button> 
+
+      <ion-title>
+        {{mensaje}} 
+      </ion-title>
+      <form [formGroup]='FormMensaje'>
+        <ion-item>
+          <ion-input formControlName="Mensaje" label="Ingrese el mensaje:" ></ion-input>
+        </ion-item>
+      </form>
+
+      <ion-button (click)="RecuperarMensaje()"> Enviar Mensaje </ion-button> 
     </ion-card-content>
   </ion-card>
 
