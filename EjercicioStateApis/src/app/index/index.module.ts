@@ -8,13 +8,17 @@ import { IndexPageRoutingModule } from './index-routing.module';
 
 import { IndexPage } from './index.page';
 
+import { RecuperarMensajeModule } from '../recuperar-mensaje/recuperar-mensaje.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     IndexPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecuperarMensajeModule
+
   ],
   declarations: [IndexPage]
 })
