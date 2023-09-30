@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { StateService } from '../state/state.service';
+import { ApiService } from '../state/api.service';
 
 @Component({
   selector: 'app-index',
@@ -16,7 +17,7 @@ export class IndexPage implements OnInit {
 
   FormMensaje:FormGroup;
 
-  constructor(private fb:FormBuilder,private router:Router, private servicio :StateService) {
+  constructor(private fb:FormBuilder,private router:Router, private servicio :StateService, private rmapi: ApiService) {
 
     this.servicio.getmensaje.subscribe((mensaje)=> {this.mensaje= mensaje})
 
@@ -29,8 +30,30 @@ export class IndexPage implements OnInit {
 
    }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    this.rmapi.getFilms().subscribe(
+      (data) => {
+        console.log(data);
+        localStorage.setItem('Films', JSON.stringify(data.result))
+      }
+    )
+
   }
+
+  // getPowerStats(){
+  //   const data = localStorage.getItem('Powerstats');
+  //   const result = JSON.parse(data);
+  //   return result;
+  // }
+
+
+
+
+
+
+
+
 
   RecuperarMensaje(){
 
@@ -42,5 +65,7 @@ export class IndexPage implements OnInit {
     console.log(mensaje)
     // this.router.navigate(['/index'])
   }
+
+ 
 
 }

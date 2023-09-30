@@ -8,7 +8,10 @@ import { IndexPageRoutingModule } from './index-routing.module';
 
 import { IndexPage } from './index.page';
 
+import { HttpClientModule} from '@angular/common/http';
+
 import { RecuperarMensajeModule } from '../recuperar-mensaje/recuperar-mensaje.module';
+import { ApiService } from '../state/api.service';
 
 @NgModule({
   imports: [
@@ -17,9 +20,11 @@ import { RecuperarMensajeModule } from '../recuperar-mensaje/recuperar-mensaje.m
     IonicModule,
     IndexPageRoutingModule,
     ReactiveFormsModule,
-    RecuperarMensajeModule
+    RecuperarMensajeModule,
+    HttpClientModule
 
   ],
-  declarations: [IndexPage]
+  declarations: [IndexPage],
+  providers: [ApiService]
 })
 export class IndexPageModule {}
